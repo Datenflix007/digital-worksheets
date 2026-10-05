@@ -5,12 +5,74 @@
   <meta name="description" content="Interaktive digitale Arbeitsblätter für entdeckendes Lernen mit Datenflix007."><title>Digitale Arbeitsblätter · Datenflix007</title>
   <style>
     :root{color-scheme:dark;--bg:#0a1114;--line:#29464d;--text:#edfbfa;--muted:#aec8c8;--accent:#62e0c0}*{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(circle at 12% 0,#164d57 0,transparent 33rem),radial-gradient(circle at 88% 12%,#503054 0,transparent 29rem),var(--bg);color:var(--text);font:16px/1.55 Inter,ui-sans-serif,system-ui,sans-serif}a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}header{position:sticky;top:0;z-index:2;border-bottom:1px solid var(--line);background:#0a1114c9;backdrop-filter:blur(14px)}.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{text-decoration:none;font-weight:800;letter-spacing:.02em}.brand i{display:inline-block;width:11px;height:11px;margin-right:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 20px var(--accent)}.navlinks{display:flex;flex-wrap:wrap;gap:7px}.navlinks a{text-decoration:none;color:var(--muted);border:1px solid transparent;border-radius:999px;padding:7px 11px;font-size:.9rem}.navlinks a:hover,.navlinks .active{color:var(--text);border-color:var(--line);background:#153036}main{padding:70px 0 90px}.eyebrow{color:var(--accent);text-transform:uppercase;font-size:.76rem;font-weight:800;letter-spacing:.16em}h1{max-width:810px;margin:12px 0 16px;font-size:clamp(2.5rem,7vw,5.5rem);line-height:.98;letter-spacing:-.065em}.intro{max-width:680px;color:var(--muted);font-size:1.1rem}.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:38px 0 50px}.promise div{border:1px solid var(--line);border-radius:14px;padding:15px;background:#102126bc;color:var(--muted)}.promise strong{display:block;color:var(--text);margin-bottom:3px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.card{min-height:345px;display:flex;flex-direction:column;justify-content:space-between;padding:28px;border:1px solid var(--line);border-radius:21px;background:linear-gradient(145deg,#16434a,#17273b);text-decoration:none;transition:transform .18s,border-color .18s,box-shadow .18s}.card:nth-child(2){background:linear-gradient(145deg,#453151,#173e45)}.card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 18px 45px #0008}.tag{align-self:flex-start;padding:5px 10px;border-radius:999px;background:#1e5b5d;color:#d7fff4;font-size:.73rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}.card h2{margin:50px 0 10px;font-size:clamp(1.7rem,3.5vw,2.5rem);line-height:1.02;letter-spacing:-.045em}.card p{margin:0;color:#d1e5e6}.arrow{margin-top:24px;color:var(--accent);font-weight:800}footer{border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted);font-size:.9rem}@media(max-width:760px){.nav{padding:12px 0;align-items:flex-start;flex-direction:column}.promise,.grid{grid-template-columns:1fr}main{padding-top:45px}}
+    /* Gemeinsame Kopfzeile für alle Datenflix007-Bereiche. */
+    header{background:rgba(9,13,22,.84);border-bottom-color:#263858}.brand i{background:#62e0c0;box-shadow:0 0 10px #62e0c0,0 0 24px rgba(98,224,192,.55)}.navlinks a:hover,.navlinks .active{color:var(--text);border-color:#3b557d;background:#16233a}
+    /* Gleiche dauerhafte Kartenform wie Tools und Guides. */
+    .catalog{margin-top:54px}.catalog h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:7px}.catalog-intro{margin:0 0 23px;color:var(--muted)}.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.catalog-grid .card.project{min-height:0;padding:18px;background:#111418;border:1px solid #334155;border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,.4);color:#e6e9ef;transition:transform .2s ease,box-shadow .2s ease}.catalog-grid .card.project:hover{transform:translateY(-2px);border-color:#46658f;box-shadow:0 14px 30px rgba(0,0,0,.28)}.catalog-grid .project h3{margin:0 0 6px;font-size:1.05rem}.catalog-grid .muted{color:#8892a6}.catalog-grid .project a{color:#4fc3f7!important;font-weight:600}.catalog-grid .tag{display:inline-block;border:1px solid #334155;border-radius:999px;padding:4px 8px;font-size:.8rem;color:#8892a6;margin:8px 8px 0 0}.catalog-status{color:var(--muted);padding:24px 0}.catalog-error{color:#ffd2d2}@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.catalog-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <header><div class="wrap nav"><a class="brand" href="https://datenflix007.github.io/"><i></i>Datenflix007</a><nav class="navlinks" aria-label="Bereiche"><a href="https://datenflix007.github.io/">Portal</a><a href="https://datenflix007.github.io/tools/">Tools</a><a href="https://datenflix007.github.io/guides/">Guides</a><a class="active" href="./">Arbeitsblätter</a></nav></div></header>
-  <main class="wrap"><p class="eyebrow">Entdecken statt abarbeiten</p><h1>Digitale Arbeitsblätter mit echten Lernwegen.</h1><p class="intro">Hier führen Aufgaben nicht bloß zu einer Lösung, sondern zu Recherche, Beobachtung und eigenen Notizen. Die Materialien sind direkt im Browser nutzbar.</p><section class="promise" aria-label="Merkmale"><div><strong>Interaktiv</strong> erkunden, auswählen und ausprobieren</div><div><strong>Quellenorientiert</strong> selbst recherchieren und begründen</div><div><strong>Für Workshops</strong> gemeinsam lernen und Ergebnisse sichern</div></section><section class="grid" aria-label="Digitale Arbeitsblätter">
+  <header><div class="wrap nav"><a class="brand" href="https://datenflix007.github.io/"><i></i>Felix Staacke</a><nav class="navlinks" aria-label="Bereiche"><a href="https://datenflix007.github.io/">Portal</a><a href="https://datenflix007.github.io/tools/">Tools</a><a href="https://datenflix007.github.io/guides/">Guides</a></nav></div></header>
+  <main class="wrap"><p class="eyebrow">Entdecken statt abarbeiten</p><h1>Digitale Arbeitsblätter mit echten Lernwegen.</h1><p class="intro">Hier führen Aufgaben nicht bloß zu einer Lösung, sondern zu Recherche, Beobachtung und eigenen Notizen. Die Materialien sind direkt im Browser nutzbar.</p><section class="promise" aria-label="Merkmale"><div><strong>Interaktiv</strong> erkunden, auswählen und ausprobieren</div><div><strong>Quellenorientiert</strong> selbst recherchieren und begründen</div><div><strong>Für Workshops</strong> gemeinsam lernen und Ergebnisse sichern</div></section><section hidden class="grid" aria-label="Digitale Arbeitsblätter">
     <a class="card" href="Jena_HistoricalJobs/"><span class="tag">Geschichte · Jena</span><div><h2>Der Jenaer Wald und wir</h2><p>Ein Workshop-Arbeitsblatt zu historischen Forstberufen. Lernende erkunden Rollen, recherchieren selbstständig und sammeln Beobachtungen im integrierten Notizblatt.</p><span class="arrow">Arbeitsblatt starten →</span></div></a>
     <a class="card" href="Jena_HistoricalMap/"><span class="tag">Historische Karte</span><div><h2>Jena entdecken</h2><p>Eine interaktive Karte mit Orten und Geschichten. Historische Spuren werden räumlich erfahrbar und laden zum Weiterforschen ein.</p><span class="arrow">Karte öffnen →</span></div></a>
-  </section></main><footer><div class="wrap">Datenflix007 · Digitale Lernmaterialien für Schule und Workshop</div></footer>
+  </section><section class="catalog" aria-labelledby="catalog-title"><h2 id="catalog-title">Alle digitalen Arbeitsblätter</h2><p class="catalog-intro" id="catalog-description">Lade die Materialübersicht …</p><div class="catalog-grid" id="projectCatalog" aria-live="polite"><p class="catalog-status">Karten werden geladen …</p></div></section></main><footer><div class="wrap">Datenflix007 · Digitale Lernmaterialien für Schule und Workshop</div></footer>
+  <script>
+    (() => {
+      const catalog = document.getElementById("projectCatalog");
+      const description = document.getElementById("catalog-description");
+      const mapCard = () => {
+        const card = document.createElement("article");
+        card.className = "card project";
+        card.innerHTML = '<h3>Jena entdecken</h3><img src="Jena_HistoricalMap/assets/map1.png" alt="Vorschau: Historische Karte von Jena" style="width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block; margin:12px 0; border-radius:12px;"><p class="muted">Historische Karte</p><p class="muted">Eine interaktive Karte mit Orten und Geschichten. Historische Spuren werden räumlich erfahrbar und laden zum Weiterforschen ein.<br><br><a href="Jena_HistoricalMap/">Karte öffnen</a></p><div><span class="tag">Geschichte</span><span class="tag">Jena</span><span class="tag">Karte</span><span class="tag">JavaScript</span></div>';
+        return card;
+      };
+      const forestFallback = () => {
+        const card = document.createElement("article");
+        card.className = "card project";
+        card.innerHTML = '<h3>Der Jenaer Wald und wir</h3><img src="Jena_HistoricalJobs/image/harzer1.jpg" alt="Vorschau: Der Jenaer Wald und wir" style="width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block; margin:12px 0; border-radius:12px;"><p class="muted">Digitales Arbeitsblatt</p><p class="muted">Ein digitales Arbeitsblatt für einen Workshop zur Geschichte des Jenaer Waldes und den historischen Waldberufen.<br><br><a href="Jena_HistoricalJobs/">Arbeitsblatt öffnen</a></p><div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bildung</span></div>';
+        return card;
+      };
+      (async () => {
+        const localSource = new URL("../datenflix007.github.io/src/projekte.html", location.href).href;
+        const productionSource = "https://datenflix007.github.io/src/projekte.html";
+        const sources = location.hostname === "datenflix007.github.io" ? [productionSource] : [localSource, productionSource];
+        try {
+          let sourceText;
+          let sourceUrl;
+          for (const candidate of sources) {
+            try {
+              const response = await fetch(candidate);
+              if (!response.ok) continue;
+              sourceText = await response.text();
+              sourceUrl = candidate;
+              break;
+            } catch (_) { /* try the next source */ }
+          }
+          if (!sourceText) throw new Error("Katalogquelle nicht erreichbar");
+          const documentFromSource = new DOMParser().parseFromString(sourceText, "text/html");
+          const sourceDetails = [...documentFromSource.querySelectorAll("details")].find((element) => element.querySelector("summary")?.textContent.trim() === "Tools");
+          const cards = sourceDetails ? [...sourceDetails.querySelectorAll(".grid > .card.project")].filter((card) => card.querySelector('a[href*="digital-worksheets/"]')) : [];
+          if (!cards.length) throw new Error("Keine Arbeitsblatt-Karten gefunden");
+          const fragment = document.createDocumentFragment();
+          cards.forEach((sourceCard) => {
+            const card = sourceCard.cloneNode(true);
+            card.querySelectorAll("img[src], a[href]").forEach((element) => {
+              const attribute = element.hasAttribute("src") ? "src" : "href";
+              const value = element.getAttribute(attribute);
+              if (value && !/^(#|mailto:|tel:|https?:)/i.test(value)) element.setAttribute(attribute, new URL(value, sourceUrl).href);
+            });
+            fragment.append(card);
+          });
+          fragment.append(mapCard());
+          catalog.replaceChildren(fragment);
+          description.textContent = `${cards.length + 1} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`;
+        } catch (error) {
+          catalog.replaceChildren(forestFallback(), mapCard());
+          description.textContent = "Interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.";
+        }
+      })();
+    })();
+  </script>
+  <script src="https://datenflix007.github.io/feedback-widget.js?repo=digital-worksheets" defer></script>
 </body></html>
