@@ -25,7 +25,100 @@
   const finalSummary = document.querySelector("[data-final-summary]");
   const finalExportButton = document.querySelector("#finalExportButton");
   const finalResetButton = document.querySelector("#finalResetButton");
-  const courseState = { reached: 0, active: 0, finished: false };
+  const measureDialog = document.querySelector("#measureDialog");
+  const measureDialogTitle = document.querySelector("#measureDialogTitle");
+  const measureDialogImage = document.querySelector("#measureDialogImage");
+  const measureDialogDescription = document.querySelector("#measureDialogDescription");
+  const measureDialogStructure = document.querySelector("#measureDialogStructure");
+  const measureDialogFunction = document.querySelector("#measureDialogFunction");
+  const measureDialogMinecraft = document.querySelector("#measureDialogMinecraft");
+  const courseState = { reached: 0, active: 0, finished: false, completionStep: 0, visited: [0] };
+  const measureCatalog = {
+    schwammstadt: {
+      title: "Schwammstadt", image: "media/01_Schwammstadt.svg", alt: "Illustration einer Schwammstadt",
+      description: "Eine Schwammstadt hält Regen dort fest, wo er fällt, statt ihn sofort in Rohre abzuleiten.",
+      structure: "Mulden, Teiche, bepflanzte Flächen und wasserdurchlässige Wege geben dem Regen Platz.",
+      function: "Bei Starkregen fließt weniger Wasser auf einmal ab. Gleichzeitig bleibt mehr Wasser im Boden für trockene Tage.",
+      minecraft: "Baut Teiche, flache Mulden, Kanäle, Kieswege und viele Pflanzen statt einer komplett gepflasterten Fläche."
+    },
+    stadtpark: {
+      title: "Stadtpark", image: "media/02_Stadtpark.svg", alt: "Illustration eines Stadtparks",
+      description: "Ein Stadtpark ist mehr als eine Wiese: Er schafft einen kühleren Aufenthaltsort mitten in der Stadt.",
+      structure: "Große Bäume, Sträucher, Wiesen, Wege, Sitzplätze und kleine Wasserflächen bilden verschiedene Bereiche.",
+      function: "Bäume spenden Schatten und Pflanzen geben Wasser ab. So heizt sich der Ort weniger auf und Tiere finden Lebensraum.",
+      minecraft: "Kombiniert große Bäume, Blumen, Gras, Sitzbänke, Wege und einen kleinen Teich mit einer klaren Nutzungsidee."
+    },
+    gruendach: {
+      title: "Gründach", image: "media/03_Gruendach.svg", alt: "Illustration eines Gründachs",
+      description: "Auf einem Gründach wachsen Pflanzen statt nur Kies oder Dachpappe zu liegen.",
+      structure: "Über der Dachabdichtung liegen Speicherschichten, Erde und robuste Pflanzen; Wasser kann dort kurz gespeichert werden.",
+      function: "Das Dach wird in der Sonne weniger heiß, hält einen Teil des Regens zurück und bietet Insekten zusätzlichen Lebensraum.",
+      minecraft: "Gestaltet flache Dächer mit Erde, Moos, Blättern, kleinen Beeten und einer sinnvollen Regenrinne."
+    },
+    agroforst: {
+      title: "Agroforst", image: "media/04_Agroforst.svg", alt: "Illustration von Agroforst mit Bäumen und Anbauflächen",
+      description: "Agroforst verbindet Ackerbau oder Gärten mit Bäumen auf derselben Fläche.",
+      structure: "Zwischen Beeten oder Feldern stehen Baumreihen, Hecken und Wege; darunter können Pflanzen wachsen oder Tiere weiden.",
+      function: "Wurzeln halten den Boden fest, Bäume bremsen Wind und spenden Schatten. Das hilft Boden, Wasser und Artenvielfalt.",
+      minecraft: "Legt Felder und Beete zwischen Baumreihen an und lasst Wege für Menschen, Tiere und die Pflege frei."
+    },
+    recycling: {
+      title: "Recycling", image: "media/05_Recycling.svg", alt: "Illustration von Recycling",
+      description: "Recycling bedeutet, Materialien nach ihrer Nutzung wieder als Rohstoff zu verwenden.",
+      structure: "Sammelstellen, klar beschriftete Behälter und Wege zur Sortierung gehören zu einem funktionierenden Kreislauf.",
+      function: "Wenn Papier, Glas, Metalle oder Baustoffe wiederverwendet werden, müssen weniger neue Rohstoffe abgebaut werden.",
+      minecraft: "Plant eine gut beschilderte Sammelstelle und baut aus gebrauchten Materialien neue Möbel, Wege oder Dekoration."
+    },
+    radwege: {
+      title: "Rad- und Fußwege", image: "media/06_Rad_und_Fusswege.svg", alt: "Illustration von Rad- und Fußwegen",
+      description: "Sichere, kurze Wege machen es leichter, zu Fuß oder mit dem Fahrrad unterwegs zu sein.",
+      structure: "Breite, getrennte Wege, sichere Kreuzungen, Beleuchtung, Bäume und Fahrradständer gehören zusammen.",
+      function: "Wenn mehr Wege ohne Auto möglich sind, entstehen weniger Abgase und weniger Lärm. Bewegung tut außerdem Menschen gut.",
+      minecraft: "Markiert klare Wege mit unterschiedlichen Blöcken, baut Übergänge, Fahrradständer und schattenspendende Bäume."
+    },
+    energie: {
+      title: "Erneuerbare Energie", image: "media/07_Erneuerbare_Energie.svg", alt: "Illustration erneuerbarer Energie",
+      description: "Sonne, Wind und Wasser können Energie liefern, ohne Kohle, Öl oder Gas zu verbrennen.",
+      structure: "Solardächer, Windräder, Leitungen und Speicher müssen passend zum Ort geplant werden.",
+      function: "So gelangen weniger zusätzliche Treibhausgase in die Atmosphäre. Energiesparen bleibt trotzdem wichtig.",
+      minecraft: "Setzt Solarpaneele auf Dächer, plant einen kleinen Technikbereich und achtet darauf, dass Wege und Naturflächen erhalten bleiben."
+    },
+    marktplatz: {
+      title: "Grüner Marktplatz", image: "media/08_Marktplatz.svg", alt: "Illustration eines grünen Marktplatzes",
+      description: "Ein grüner Marktplatz verbindet einen Treffpunkt mit Schatten, kurzen Wegen und Platz für Veranstaltungen.",
+      structure: "Bäume, Beete, Bänke, Trinkwasser, Marktstände und durchlässige Wege machen den Platz vielseitig nutzbar.",
+      function: "Schatten und Pflanzen machen den Platz an heißen Tagen angenehmer; Menschen können dort zu Fuß einkaufen und sich treffen.",
+      minecraft: "Baut einen Platz mit Bauminseln, Sitzgelegenheiten, Marktständen und Wegen, die nicht vollständig aus Stein bestehen."
+    },
+    flussufer: {
+      title: "Naturnahes Flussufer", image: "media/09_Flussufer.svg", alt: "Illustration eines naturnahen Flussufers",
+      description: "Ein naturnahes Flussufer gibt dem Wasser mehr Raum als eine vollständig befestigte Kante.",
+      structure: "Flache Ufer, Wiesen, Bäume, Röhricht und Rückhalteräume wechseln sich mit sicheren Wegen und Sitzplätzen ab.",
+      function: "Bei viel Regen kann sich Wasser besser ausbreiten. Pflanzen kühlen den Ort und bieten Tieren Schutz.",
+      minecraft: "Modelliert flache Ufer mit Sand, Erde, Schilf und Bäumen; lasst neben dem Fluss bewusst Überschwemmungsfläche frei."
+    },
+    oepnv: {
+      title: "ÖPNV", image: "media/10_OEPNV.svg", alt: "Illustration des öffentlichen Nahverkehrs",
+      description: "Busse und Bahnen bringen viele Menschen gemeinsam ans Ziel.",
+      structure: "Haltestellen, sichere Wege dorthin, barrierefreie Einstiege und gute Verbindungen machen den Nahverkehr nutzbar.",
+      function: "Wenn mehr Menschen gemeinsam fahren, brauchen wir weniger Autos und Parkplätze. Das spart Platz, Lärm und Abgase.",
+      minecraft: "Plant eine Bus- oder Straßenbahnlinie mit gut erreichbaren Haltestellen, Sitzplätzen und sicheren Übergängen."
+    },
+    wohngebaeude: {
+      title: "Gute Wohngebäude", image: "media/11_Wohngebaeude.svg", alt: "Illustration eines energieeffizienten Wohngebäudes",
+      description: "Ein gutes Wohngebäude schützt vor Kälte im Winter und vor Hitze im Sommer.",
+      structure: "Dämmung, Fensterläden, Begrünung, Schatten und gut geplante Räume sorgen für ein angenehmes Klima im Haus.",
+      function: "Weniger Heiz- und Kühlenergie wird gebraucht. Das spart Geld und verringert Treibhausgase.",
+      minecraft: "Baut Dächer mit Überstand, schattige Fenster, begrünte Höfe und unterschiedliche Wohnungsgrößen statt nur gleichförmiger Häuser."
+    },
+    spielort: {
+      title: "Spiel- und Lernort", image: "media/12_Spiel_und_Lernort.svg", alt: "Illustration eines Spiel- und Lernorts",
+      description: "Ein guter Spiel- und Lernort lädt zum Bewegen, Entdecken und gemeinsamen Lernen ein – auch an warmen Tagen.",
+      structure: "Bäume, Schattensegel, Sitzplätze, Wasser, Spielgeräte und ein kleiner Lernbereich gehören sinnvoll zusammen.",
+      function: "Schatten und Wasser machen den Ort kühler. Gleichzeitig haben Kinder Raum zum Spielen, Treffen und Forschen.",
+      minecraft: "Baut einen Spielplatz mit Bäumen, Bänken, Wasserstelle und einem kleinen Pavillon oder Klassenzimmer im Freien."
+    }
+  };
   const retiredCardTwoNames = new Set([
     "weather_climate_1", "weather_climate_2", "weather_climate_3", "weather_climate_4",
     "industry_changes", "industry_balance", "nature_quiz_forest", "nature_quiz_change",
@@ -64,7 +157,7 @@
       version: 1,
       savedAt: new Date().toISOString(),
       values,
-      course: { ...courseState },
+      course: { ...courseState, visited: [...courseState.visited] },
       reflection: { submitted: reflectionSubmitted }
     };
   }
@@ -89,6 +182,23 @@
       }
       console.error("Lokales Speichern fehlgeschlagen:", error);
       return false;
+    }
+  }
+
+  function normalizeVisitedCards(visited, lastCard, activeCard) {
+    const savedVisited = Array.isArray(visited)
+      ? visited
+      : Array.from({ length: activeCard + 1 }, (_, index) => index);
+    return [...new Set([...savedVisited, 0, activeCard]
+      .map(Number)
+      .filter((index) => Number.isInteger(index) && index >= 0 && index <= lastCard))]
+      .sort((first, second) => first - second);
+  }
+
+  function markCourseCardVisited(index) {
+    if (!courseState.visited.includes(index)) {
+      courseState.visited.push(index);
+      courseState.visited.sort((first, second) => first - second);
     }
   }
 
@@ -120,6 +230,8 @@
         courseState.reached = Math.max(0, Math.min(Number(savedCourse.reached) || 0, lastCard));
         courseState.active = Math.max(0, Math.min(Number(savedCourse.active) || 0, courseState.reached));
         courseState.finished = Boolean(savedCourse.finished);
+        courseState.completionStep = Math.max(0, Math.min(Number(savedCourse.completionStep) || 0, 2));
+        courseState.visited = normalizeVisitedCards(savedCourse.visited, lastCard, courseState.active);
       }
 
       getFields().forEach((field) => {
@@ -358,12 +470,13 @@
     const lastCard = courseCards.length - 1;
     courseState.reached = Math.max(0, Math.min(courseState.reached, lastCard));
     courseState.active = Math.max(0, Math.min(courseState.active, courseState.reached));
+    courseState.visited = normalizeVisitedCards(courseState.visited, lastCard, courseState.active);
 
     courseCards.forEach((card, index) => {
       const visible = courseState.finished || index === courseState.active;
       card.hidden = !visible;
       card.classList.toggle("is-course-current", !courseState.finished && index === courseState.active);
-      card.classList.toggle("is-course-visited", index <= courseState.reached || courseState.finished);
+      card.classList.toggle("is-course-visited", courseState.finished || courseState.visited.includes(index));
 
       const footerMessage = card.querySelector("[data-course-gate-message]");
       if (footerMessage) {
@@ -381,7 +494,8 @@
     });
 
     document.querySelectorAll("[data-course-finish-card]").forEach((card) => {
-      card.hidden = !courseState.finished;
+      const step = Number(card.dataset.courseFinishStep) || 0;
+      card.hidden = !courseState.finished || step !== courseState.completionStep;
     });
 
     document.querySelectorAll("[data-section-link]").forEach((link, index) => {
@@ -391,6 +505,21 @@
       link.classList.toggle("is-course-complete", courseState.finished || index < courseState.reached);
       link.setAttribute("aria-disabled", String(!available));
       link.tabIndex = available ? 0 : -1;
+    });
+
+    document.querySelectorAll("[data-progress-card-index]").forEach((button) => {
+      const index = Number(button.dataset.progressCardIndex);
+      const available = courseState.finished || courseState.visited.includes(index);
+      const current = !courseState.finished && index === courseState.active;
+      button.disabled = !available;
+      button.classList.toggle("is-reached", available);
+      button.classList.toggle("is-current", current);
+      if (current) {
+        button.setAttribute("aria-current", "step");
+      } else {
+        button.removeAttribute("aria-current");
+      }
+      button.setAttribute("aria-label", `Lernkarte ${index + 1}${current ? ", aktuelle Lernkarte" : available ? " öffnen" : ", noch gesperrt"}`);
     });
 
     if (courseGuideStatus) {
@@ -406,6 +535,7 @@
       return;
     }
     courseState.active = index;
+    markCourseCardVisited(index);
     updateCourseProgression();
     persist();
     if (scroll) {
@@ -424,6 +554,28 @@
     showCourseCard(nextIndex);
   }
 
+  function goToPreviousCourseCard(previousIndex) {
+    if (previousIndex < 0 || previousIndex > courseState.reached || !courseCards[previousIndex]) {
+      return;
+    }
+    if (courseState.finished) {
+      courseCards[previousIndex].scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    showCourseCard(previousIndex);
+  }
+
+  function goToProgressCourseCard(index) {
+    if (index < 0 || !courseCards[index] || (!courseState.finished && !courseState.visited.includes(index))) {
+      return;
+    }
+    if (courseState.finished) {
+      courseCards[index].scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    showCourseCard(index);
+  }
+
   function finishCourse() {
     const currentCard = courseCards[courseCards.length - 1];
     if (!currentCard || !canAdvanceCard(currentCard)) {
@@ -432,15 +584,37 @@
       return;
     }
     courseState.reached = courseCards.length - 1;
+    courseState.visited = courseCards.map((_, index) => index);
     courseState.finished = true;
+    courseState.completionStep = 0;
     updateCourseProgression();
     persist();
     document.querySelector("#moderationskarten")?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  function showCompletionStep(step) {
+    if (!courseState.finished) {
+      return;
+    }
+    courseState.completionStep = Math.max(0, Math.min(step, 2));
+    updateCourseProgression();
+    persist();
+    document.querySelector(`[data-course-finish-step="${courseState.completionStep}"]`)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   function setupCourse() {
     document.querySelectorAll("[data-course-next]").forEach((button) => {
       button.addEventListener("click", () => advanceCourse(Number(button.dataset.courseNextIndex)));
+    });
+    document.querySelectorAll("[data-course-previous]").forEach((button) => {
+      button.addEventListener("click", () => goToPreviousCourseCard(Number(button.dataset.coursePreviousIndex)));
+    });
+    document.querySelectorAll("[data-progress-card-index]").forEach((button) => {
+      button.addEventListener("click", () => goToProgressCourseCard(Number(button.dataset.progressCardIndex)));
+    });
+    document.querySelectorAll("[data-completion-step]").forEach((button) => {
+      button.addEventListener("click", () => showCompletionStep(Number(button.dataset.completionStep)));
     });
     document.querySelector("[data-course-finish]")?.addEventListener("click", finishCourse);
     document.querySelector(".station-nav")?.addEventListener("click", (event) => {
@@ -457,6 +631,36 @@
       showCourseCard(index);
     });
     updateCourseProgression();
+  }
+
+  function openMeasureDialog(id) {
+    const measure = measureCatalog[id];
+    if (!measure || !measureDialog || !measureDialogTitle || !measureDialogImage
+      || !measureDialogDescription || !measureDialogStructure || !measureDialogFunction || !measureDialogMinecraft) {
+      return;
+    }
+    measureDialogTitle.textContent = measure.title;
+    measureDialogImage.src = measure.image;
+    measureDialogImage.alt = measure.alt;
+    measureDialogDescription.textContent = measure.description;
+    measureDialogStructure.textContent = measure.structure;
+    measureDialogFunction.textContent = measure.function;
+    measureDialogMinecraft.textContent = measure.minecraft;
+    if (!measureDialog.open) {
+      measureDialog.showModal();
+    }
+  }
+
+  function setupMeasureCatalog() {
+    document.querySelectorAll("[data-measure-card]").forEach((card) => {
+      card.addEventListener("click", () => openMeasureDialog(card.dataset.measureId));
+    });
+    document.querySelector("[data-measure-dialog-close]")?.addEventListener("click", () => measureDialog?.close());
+    measureDialog?.addEventListener("click", (event) => {
+      if (event.target === measureDialog) {
+        measureDialog.close();
+      }
+    });
   }
 
   function updateReflectionFeedback() {
@@ -596,21 +800,30 @@
             ? "🌡️ viel wärmer"
             : "⚠️ sehr viel wärmer?";
     }
-    greenhouseResult.textContent = level <= 1
-      ? "Aktueller Zustand: Sehr wenige zusätzliche Treibhausgase. Viel Wärmeenergie kann das Klimasystem verlassen."
+    const explanation = level <= 1
+      ? {
+        observation: "Du siehst wenige rote Wärmepfeile zurück zur Erde. Viel Wärme kann im Modell weiter ins Weltall gelangen. Der natürliche Treibhauseffekt bleibt dabei wichtig: Er hält genug Wärme für Leben auf der Erde fest."
+      }
       : level <= 2
-        ? "Aktueller Zustand: Weniger zusätzliche Treibhausgase. Ein Teil der Wärme verlässt das Klimasystem."
-        : level <= 3
-          ? "Aktueller Zustand: Etwas mehr zusätzliche Treibhausgase. Die Atmosphäre gibt mehr Wärme auch wieder Richtung Erde ab."
-          : level <= 4
-            ? "Aktueller Zustand: Mehr zusätzliche Treibhausgase. Mehr Wärmeenergie bleibt länger im Klimasystem."
-            : level <= 5
-              ? "Aktueller Zustand: Viele zusätzliche Treibhausgase. Mehr Wärmepfeile zeigen zurück zur Erde."
-              : level <= 6
-                ? "Aktueller Zustand: Sehr viele zusätzliche Treibhausgase. Deutlich mehr Wärmeenergie wird in der Atmosphäre aufgenommen und wieder abgegeben."
-                : level <= 7
-                  ? "Aktueller Zustand: Besonders viele zusätzliche Treibhausgase. Die starke Wärmewirkung ist in der warm gefärbten Atmosphäre sichtbar."
-                  : "Extremstufe: Sehr viele zusätzliche Treibhausgase. Das Fragezeichen erinnert daran, dass immer mehr Emissionen große und schwer abschätzbare Folgen haben können.";
+        ? {
+          observation: "Ein Teil der Wärmestrahlung wird von der Atmosphäre aufgenommen und in verschiedene Richtungen wieder abgegeben. Ein anderer Teil kann weiter ins Weltall gelangen. Die Sonne bleibt gleich stark: Der Regler verändert nur die zusätzlichen Treibhausgase."
+        }
+        : level <= 4
+          ? {
+            observation: "Mehr rote Wärmepfeile zeigen zurück zur Erde. Die Atmosphäre nimmt mehr Wärmestrahlung auf und gibt sie in verschiedene Richtungen wieder ab. Dadurch bleibt Wärme länger im Klimasystem – nicht weil die Sonne stärker scheint."
+          }
+          : level <= 6
+            ? {
+              observation: "Jetzt kehren deutlich mehr Wärmepfeile Richtung Erde zurück. Weniger Wärme kann sofort nach außen weiterziehen. Erde und untere Atmosphäre erwärmen sich, bis sie im Durchschnitt wieder genug Energie ins Weltall abgeben können."
+            }
+            : level <= 7
+              ? {
+                observation: "Die warm gefärbte Atmosphäre und viele zurückkehrende Wärmepfeile zeigen eine starke Wärmewirkung. Je mehr zusätzliche Treibhausgase in die Atmosphäre gelangen, desto stärker verändert sich der Wärmehaushalt."
+              }
+              : {
+                observation: "Die Extremstufe zeigt sehr viele zusätzliche Treibhausgase. Das Fragezeichen lädt euch zum Nachdenken ein: Welche Probleme durch Hitze, Starkregen oder Trockenheit erleben wir schon heute? Wie könnten sie sich weiterentwickeln, wenn wir die Ursachen nicht angehen?"
+              };
+    greenhouseResult.textContent = explanation.observation;
   }
 
   function setupShootingStars() {
@@ -967,7 +1180,6 @@
           ["Verantwortlicher Umgang mit der Umwelt", "nature_quiz_change"],
           ["Gas beim Verbrennen", "industry_quiz_gas"],
           ["Folge von zusätzlichem CO₂", "industry_quiz_warming"],
-          ["Durch Treibhausgase beeinflusste Energie", "energy_focus"],
           ["Wetter oder Klima – heute", "weather_sort_today"],
           ["Wetter oder Klima – morgen", "weather_sort_tomorrow"],
           ["Wetter oder Klima – typische Sommer", "weather_sort_summer"],
@@ -1059,6 +1271,15 @@
           ["Präsentationssatz", "presentation_sentence"],
           ["Team-Check", "team_finished"]
         ]
+      },
+      {
+        title: "FAZIT: UNSERE UMSETZUNGSIDEEN",
+        entries: [
+          ["Unsere wichtigste Idee", "moderation_idea_main"],
+          ["So hilft sie", "moderation_idea_effect"],
+          ["Hier setzen wir sie um", "moderation_idea_place"],
+          ["So bauen wir sie in Minecraft", "moderation_idea_minecraft"]
+        ]
       }
     ];
 
@@ -1131,6 +1352,8 @@
     courseState.reached = 0;
     courseState.active = 0;
     courseState.finished = false;
+    courseState.completionStep = 0;
+    courseState.visited = [0];
     retiredCardTwoValues = {};
     reflectionSubmitted = false;
     try {
@@ -1247,6 +1470,7 @@
   setupSortBoards();
   setupComic();
   setupCourse();
+  setupMeasureCatalog();
   setupReflection();
   syncSelectedProblem();
   refreshInteractiveFeedback();

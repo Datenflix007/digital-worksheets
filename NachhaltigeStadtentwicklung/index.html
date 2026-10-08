@@ -28,8 +28,18 @@
         <div class="progress-meta">
           <span><strong id="progressPercent">0 %</strong> bearbeitet</span>
         </div>
-        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progressPercent">
-          <span id="progressBar"></span>
+        <div class="progress-track-shell">
+          <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="progressPercent">
+            <span id="progressBar"></span>
+          </div>
+          <nav class="progress-card-nav" aria-label="Zwischen Lernkarten wechseln">
+            <button type="button" class="progress-card-dot" data-progress-card-index="0" aria-label="Lernkarte 1 öffnen" title="Lernkarte 1"></button>
+            <button type="button" class="progress-card-dot" data-progress-card-index="1" aria-label="Lernkarte 2 öffnen" title="Lernkarte 2" disabled></button>
+            <button type="button" class="progress-card-dot" data-progress-card-index="2" aria-label="Lernkarte 3 öffnen" title="Lernkarte 3" disabled></button>
+            <button type="button" class="progress-card-dot" data-progress-card-index="3" aria-label="Lernkarte 4 öffnen" title="Lernkarte 4" disabled></button>
+            <button type="button" class="progress-card-dot" data-progress-card-index="4" aria-label="Lernkarte 5 öffnen" title="Lernkarte 5" disabled></button>
+            <button type="button" class="progress-card-dot" data-progress-card-index="5" aria-label="Lernkarte 6 öffnen" title="Lernkarte 6" disabled></button>
+          </nav>
         </div>
       </div>
       <span class="save-state" id="saveState" role="status">Bereit</span>
@@ -47,23 +57,6 @@
       </div>
     </section>
 
-    <nav class="station-nav" aria-label="Stationen des Arbeitsblatts">
-      <a href="#station-1" data-section-link="station-1"><span>1</span> Früher</a>
-      <a href="#station-2" data-section-link="station-2" class="is-locked" aria-disabled="true" tabindex="-1"><span>2</span> Wechselwirkung</a>
-      <a href="#station-3" data-section-link="station-3" class="is-locked" aria-disabled="true" tabindex="-1"><span>3</span> Folgen</a>
-      <a href="#station-4" data-section-link="station-4" class="is-locked" aria-disabled="true" tabindex="-1"><span>4</span> Verbinden</a>
-      <a href="#station-5" data-section-link="station-5" class="is-locked" aria-disabled="true" tabindex="-1"><span>5</span> Planen</a>
-      <a href="#station-6" data-section-link="station-6" class="is-locked" aria-disabled="true" tabindex="-1"><span>6</span> Bauen</a>
-    </nav>
-
-    <aside class="course-guide" aria-labelledby="courseGuideTitle">
-      <div>
-        <p class="eyebrow">Lernkarten-Kurs</p>
-        <h2 id="courseGuideTitle">Eine Karte nach der anderen</h2>
-      </div>
-      <p id="courseGuideStatus" aria-live="polite">Lernkarte 1 von 6: Lest, löst die Quizfragen und klickt am Ende weiter.</p>
-    </aside>
-
     <section class="station station-history" id="station-1" data-station data-course-card aria-labelledby="station1Title">
       <div class="station-heading">
         <span class="station-number">01</span>
@@ -79,7 +72,7 @@
           <h3>Umweltgeschichte in 60 Sekunden</h3>
           <p>Umweltgeschichte fragt: <strong>Wie haben Menschen Natur genutzt, verändert und geschützt?</strong> Schon lange vor Fabriken waren Menschen von Wasser, Boden, Wäldern, Tieren und Wetter abhängig. Sie beobachteten Jahreszeiten, planten Aussaat und Ernte und nutzten Holz oder Lehm zum Bauen.</p>
           <p>Dabei gingen Menschen nicht immer vorsichtig vor. Wälder konnten übernutzt und Böden ausgelaugt werden. Deshalb entstanden auch Regeln: Wann darf Holz geschlagen werden? Wo dürfen Tiere weiden? Wie bleibt genug für das nächste Jahr?</p>
-          <aside class="remember"><strong>Merke:</strong> Früher lebten Menschen nicht automatisch „im Einklang mit der Natur“. Sie mussten Nutzung, Wissen und Schutz immer wieder neu austarieren.</aside>
+          <aside class="remember"><strong>Merke:</strong> Natur nutzen heißt auch, sie schützen: Werden Wälder oder Böden zu stark genutzt, fehlen später Holz, Nahrung oder fruchtbare Erde.</aside>
         </article>
 
         <div class="scene-strip" aria-label="Vier Beispiele aus der Umweltgeschichte">
@@ -196,7 +189,7 @@
           <input type="hidden" name="history_sort_drought" data-progress><input type="hidden" name="history_sort_forest" data-progress><input type="hidden" name="history_sort_farming" data-progress><input type="hidden" name="history_sort_logging" data-progress>
         </div>
         <p class="choice-feedback" data-sort-feedback aria-live="polite">Ziehe jede Karte in eine Kategorie. „Beides“ ist hier ebenfalls möglich.</p>
-        <aside class="takeaway"><strong>💡 Merke:</strong> Menschen und Natur beeinflussen sich gegenseitig. Das war früher so und ist heute noch so.</aside>
+        <aside class="takeaway"><strong>💡 Merke:</strong> Menschen brauchen Wasser, Boden und Pflanzen – und verändern sie durch Bauen, Landwirtschaft und Energieverbrauch.</aside>
       </section>
 
       <section class="task-card connection-card" id="connectionCard" aria-labelledby="connectionTitle" hidden>
@@ -220,7 +213,7 @@
         <span class="station-number">02</span>
         <div>
           <p class="eyebrow">Klima verstehen</p>
-          <h2 id="station2Title">Warum wird es wärmer?</h2>
+          <h2 id="station2Title">Von Natur zum Klima: Warum wird es wärmer?</h2>
         </div>
         <span class="station-status" aria-live="polite">offen</span>
       </div>
@@ -229,8 +222,8 @@
         <section class="learning-block exchange-lab" aria-labelledby="exchangeTitle">
           <div>
             <p class="learning-label">📖 Verstehen</p>
-            <h3 id="exchangeTitle">Menschen brauchen Natur – und verändern Orte</h3>
-            <p>Wasser, Boden, Holz und Sonne machen unser Leben möglich. Menschen bauen Häuser, Wege und Felder. Entscheidend ist, wie wir dabei mit Natur umgehen.</p>
+            <h3 id="exchangeTitle">Menschen beziehen Ressourcen aus der Natur</h3>
+            <p>Wasser, Boden, Holz, Sonne und Tiere machen unser Leben möglich. Daraus gewinnen wir Nahrung, Baumaterialien, Wärme und Energie. Menschen bauen Häuser, Wege und Felder – und verändern damit Orte.</p>
           </div>
           <div class="nature-gifts" aria-label="Beispiele aus der Natur">
             <article><span aria-hidden="true">🌳</span><strong>Wald</strong><small>Holz und Lebensraum</small></article>
@@ -241,20 +234,31 @@
           </div>
         </section>
 
-        <aside class="takeaway"><strong>💡 Merke:</strong> Menschen sind Teil der Natur. Unsere Entscheidungen verändern Umwelt und Klima – und wir können sie bewusst treffen.</aside>
+        <aside class="takeaway"><strong>💡 Merke:</strong> Entscheidungen verändern Orte: Versiegelte Flächen halten Hitze und lassen Regen schlechter versickern; Bäume und Wasser können kühlen.</aside>
 
-        <!-- Fachliche Grundlage: Wildbichler, Haagen-Schützenhöfer & Schubatzky 2025, S. 117-169. -->
-        <section class="task-block energy-order" aria-labelledby="energyOrderTitle">
-          <p class="task-label">🧩 Vor der Animation</p>
-          <h3 id="energyOrderTitle">Was verändert der Regler – und was nicht?</h3>
-          <p>Beobachte gleich die gelben und roten Pfeile. Der Regler steht für <strong>zusätzliche Treibhausgase</strong>, nicht für eine stärkere Sonne.</p>
-          <fieldset data-quiz-group data-correct="waermestrahlung">
-            <legend>Welche Energie wird durch zusätzliche Treibhausgase direkt beeinflusst?</legend>
-            <label><input type="radio" name="energy_focus" value="sonnenstrahlung" data-wrong-feedback="Noch nicht: Der Regler macht die Sonne nicht stärker. Sonnenstrahlung bleibt der Energie-Eingang in das Modell."><span>Die Sonnenstrahlung, die von der Sonne kommt.</span></label>
-            <label><input type="radio" name="energy_focus" value="waermestrahlung" data-correct-feedback="Richtig: Die erwärmte Erde gibt Wärmestrahlung ab. Treibhausgase nehmen einen Teil davon auf und geben ihn wieder ab."><span>Die Wärmestrahlung, die Erde und Atmosphäre abgeben.</span></label>
-            <label><input type="radio" name="energy_focus" value="keine" data-wrong-feedback="Doch: Zusätzliche Treibhausgase verändern den Wärmehaushalt. Sie wirken aber nicht wie ein Spiegel für alles Sonnenlicht."><span>Keine – Treibhausgase verändern nur die Luft.</span></label>
-            <p class="quiz-feedback" data-quiz-feedback aria-live="polite"></p>
-          </fieldset>
+        <section class="learning-intro weather-intro" aria-labelledby="weatherIntroTitle">
+          <p class="learning-label">📖 Verstehen</p>
+          <h3 id="weatherIntroTitle">Wetter kann man beobachten und messen</h3>
+          <p>Mit Thermometer, Regenmesser oder Windmesser können wir beobachten, wie das Wetter heute ist. Wenn Fachleute viele Messungen über lange Zeit vergleichen, können sie erkennen, wie es um das Klima steht.</p>
+        </section>
+
+        <section class="task-block weather-sort" aria-labelledby="weatherSortTitle">
+          <p class="task-label">🧩 Klar unterscheiden</p>
+          <h3 id="weatherSortTitle">Wetter oder Klima?</h3>
+          <p><strong>Wetter</strong> beschreibt, was heute oder morgen passiert. <strong>Klima</strong> beschreibt typische Verhältnisse über viele Jahre.</p>
+          <p class="sort-instruction">Zieht jede Aussage in eine Spalte. Ohne Maus: Karte anklicken, dann „Wetter“ oder „Klima“ anklicken.</p>
+          <div class="sort-board" data-sort-board data-board-label="Wetter oder Klima" data-board-feedback="[data-weather-feedback]">
+            <section class="sort-column" data-sort-target=""><button class="sort-target" type="button" data-sort-target-button><strong>Nicht zugeordnet</strong><small>Hier starten alle Aussagen.</small></button><div class="sort-card-list" data-sort-card-list>
+              <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_today" data-correct="weather" data-correct-feedback="Richtig: Das ist eine Messung für einen einzelnen Tag – also Wetter." data-wrong-feedback="Achte auf „heute“: Eine einzelne Temperatur beschreibt Wetter."><button type="button" data-sort-card-select aria-pressed="false">Heute sind es 31 °C. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
+              <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_tomorrow" data-correct="weather" data-correct-feedback="Richtig: Eine Vorhersage für morgen beschreibt Wetter." data-wrong-feedback="Achte auf „morgen“: Das ist eine kurzfristige Wettervorhersage."><button type="button" data-sort-card-select aria-pressed="false">Morgen regnet es. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
+              <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_summer" data-correct="climate" data-correct-feedback="Richtig: „Langfristig im Durchschnitt“ beschreibt Klima, nicht einen einzelnen Sommer." data-wrong-feedback="Die Wörter „langfristig“ und „im Durchschnitt“ sind Hinweise auf Klima."><button type="button" data-sort-card-select aria-pressed="false">Sommer werden langfristig im Durchschnitt wärmer. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
+              <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_decades" data-correct="climate" data-correct-feedback="Richtig: Typische Verhältnisse über Jahrzehnte beschreiben Klima." data-wrong-feedback="Hier zählt der lange Zeitraum „über Jahrzehnte“ – das ist Klima."><button type="button" data-sort-card-select aria-pressed="false">Typische Temperatur und Niederschläge verändern sich über Jahrzehnte. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
+            </div></section>
+            <section class="sort-column" data-sort-target="weather"><button class="sort-target" type="button" data-sort-target-button><strong>Wetter</strong><small>Heute, morgen oder diese Woche.</small></button><div class="sort-card-list" data-sort-card-list></div></section>
+            <section class="sort-column" data-sort-target="climate"><button class="sort-target" type="button" data-sort-target-button><strong>Klima</strong><small>Typisch über viele Jahre.</small></button><div class="sort-card-list" data-sort-card-list></div></section>
+            <input type="hidden" name="weather_sort_today" data-progress><input type="hidden" name="weather_sort_tomorrow" data-progress><input type="hidden" name="weather_sort_summer" data-progress><input type="hidden" name="weather_sort_decades" data-progress>
+          </div>
+          <p class="choice-feedback" data-weather-feedback aria-live="polite">Ziehe alle Aussagen in eine Kategorie.</p>
         </section>
 
         <section class="learning-block warmth-lab" aria-labelledby="warmthTitle">
@@ -336,24 +340,29 @@
             </svg>
             <span class="extreme-question" aria-hidden="true">?</span>
           </div>
-          <div class="simulation-state" aria-live="polite"><strong>Temperaturwirkung</strong><span id="greenhouseTemperature">🌡️ normal</span></div>
-          <p class="warmth-result" id="greenhouseResult" aria-live="polite">Bei der natürlichen Wärme-Decke bleibt genau genug Wärme für Leben auf der Erde.</p>
+          <section class="simulation-explanation" aria-labelledby="simulationExplanationTitle">
+            <div class="simulation-state" aria-live="polite"><span>Temperaturwirkung</span><strong id="greenhouseTemperature">🌡️ normal</strong></div>
+            <div class="simulation-explanation-copy" aria-live="polite">
+              <p class="simulation-label" id="simulationExplanationTitle">Was du im Bild erkennen kannst</p>
+              <p class="warmth-result" id="greenhouseResult">Die gelben Pfeile zeigen Sonnenenergie. Ein Teil der roten Wärmepfeile geht weiter ins Weltall, ein anderer Teil wird von der Atmosphäre aufgenommen und wieder abgegeben. So bleibt genug Wärme für Leben auf der Erde.</p>
+            </div>
+          </section>
           <details class="simulation-more"><summary>🔎 Genau genommen</summary><p><strong>Die Sonne sendet überwiegend kurzwellige Strahlung.</strong> Ein Teil wird von Wolken, Luft und hellen Flächen zurückgeworfen; ein anderer Teil erwärmt die Erdoberfläche.</p><p>Die erwärmte Erde gibt Energie als <strong>langwellige Wärmestrahlung (Infrarot)</strong> ab. Treibhausgase wie Wasserdampf und CO₂ können bestimmte Teile dieser Wärmestrahlung aufnehmen und selbst wieder Wärmestrahlung in verschiedene Richtungen abgeben.</p><p>Mehr zusätzliche Treibhausgase verändern dadurch die Energiebilanz: Zunächst gelangt im Mittel weniger Wärme ins All, als von der Sonne ins Erdsystem kommt. Erde und untere Atmosphäre erwärmen sich, bis Ein- und Ausstrahlung im Durchschnitt wieder zusammenpassen. Die Animation zeigt dieses Zusammenspiel stark vereinfacht.</p></details>
           <p class="academic-reference">Vgl. Wildbichler, Haagen-Schützenhöfer &amp; Schubatzky (2025), S. 117.</p>
         </section>
 
         <section class="task-block greenhouse-tasks" aria-labelledby="greenhouseTaskTitle">
-          <p class="task-label">🧩 Deine Aufgabe</p>
-          <h3 id="greenhouseTaskTitle">Erkläre, was du beobachtet hast</h3>
+          <p class="task-label">🧩 Zusammenfassen</p>
+          <h3 id="greenhouseTaskTitle">Beobachtung und Vermutung</h3>
           <fieldset data-quiz-group data-correct="waerme-bleibt">
-            <legend>Der Regler wandert weiter nach rechts. Was verändert sich?</legend>
+            <legend><strong>Beobachtung:</strong> Der Regler wandert weiter nach rechts. Was verändert sich?</legend>
             <label><input type="radio" name="greenhouse_observation" value="waerme-verlaesst"><span>Mehr Wärme verlässt die Erde direkt ins Weltall.</span></label>
             <label><input type="radio" name="greenhouse_observation" value="waerme-bleibt"><span>Ein größerer Teil der Wärme bleibt länger im Klimasystem.</span></label>
             <label><input type="radio" name="greenhouse_observation" value="sonne-mehr"><span>Die Sonne sendet plötzlich viel mehr Energie zur Erde.</span></label>
             <p class="quiz-feedback" data-quiz-feedback data-correct-feedback="Genau. Zusätzliche Treibhausgase verändern nicht die Sonne. Sie beeinflussen, wie Wärme in der Atmosphäre aufgenommen und wieder abgegeben wird." data-wrong-feedback="Schau noch einmal auf die orangefarbenen Wärmepfeile: Welche davon bleiben im System?" aria-live="polite"></p>
           </fieldset>
           <fieldset data-quiz-group data-correct="energiehaushalt">
-            <legend>Warum ist „CO₂ macht die Erde warm“ nicht die ganze Erklärung?</legend>
+            <legend><strong>Vermutung:</strong> Warum ist „CO₂ macht die Erde warm“ nicht die ganze Erklärung?</legend>
             <label><input type="radio" name="greenhouse_explanation" value="autos"><span>Weil CO₂ nur in Autos vorkommt.</span></label>
             <label><input type="radio" name="greenhouse_explanation" value="energiehaushalt"><span>Weil zusätzliche Treibhausgase den Energiehaushalt der Atmosphäre verändern.</span></label>
             <label><input type="radio" name="greenhouse_explanation" value="sauerstoff"><span>Weil CO₂ den Sauerstoff ersetzt.</span></label>
@@ -361,26 +370,7 @@
           </fieldset>
         </section>
 
-        <aside class="takeaway climate-takeaway"><strong>💡 Merke:</strong> Mehr zusätzliche Treibhausgase bedeuten nicht mehr Sonne. Sie verändern den Wärmehaushalt der Erde.</aside>
-
-        <section class="task-block weather-sort" aria-labelledby="weatherSortTitle">
-          <p class="task-label">🧩 Klar unterscheiden</p>
-          <h3 id="weatherSortTitle">Wetter oder Klima?</h3>
-          <p><strong>Wetter</strong> beschreibt, was heute oder morgen passiert. <strong>Klima</strong> beschreibt typische Verhältnisse über viele Jahre.</p>
-        <p class="sort-instruction">Zieht jede Aussage in eine Spalte. Ohne Maus: Karte anklicken, dann „Wetter“ oder „Klima“ anklicken.</p>
-        <div class="sort-board" data-sort-board data-board-label="Wetter oder Klima" data-board-feedback="[data-weather-feedback]">
-          <section class="sort-column" data-sort-target=""><button class="sort-target" type="button" data-sort-target-button><strong>Nicht zugeordnet</strong><small>Hier starten alle Aussagen.</small></button><div class="sort-card-list" data-sort-card-list>
-            <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_today" data-correct="weather" data-correct-feedback="Richtig: Das ist eine Messung für einen einzelnen Tag – also Wetter." data-wrong-feedback="Achte auf „heute“: Eine einzelne Temperatur beschreibt Wetter."><button type="button" data-sort-card-select aria-pressed="false">Heute sind es 31 °C. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
-            <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_tomorrow" data-correct="weather" data-correct-feedback="Richtig: Eine Vorhersage für morgen beschreibt Wetter." data-wrong-feedback="Achte auf „morgen“: Das ist eine kurzfristige Wettervorhersage."><button type="button" data-sort-card-select aria-pressed="false">Morgen regnet es. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
-            <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_summer" data-correct="climate" data-correct-feedback="Richtig: „Langfristig im Durchschnitt“ beschreibt Klima, nicht einen einzelnen Sommer." data-wrong-feedback="Die Wörter „langfristig“ und „im Durchschnitt“ sind Hinweise auf Klima."><button type="button" data-sort-card-select aria-pressed="false">Sommer werden langfristig im Durchschnitt wärmer. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
-            <article class="sort-card" draggable="true" data-sort-card data-name="weather_sort_decades" data-correct="climate" data-correct-feedback="Richtig: Typische Verhältnisse über Jahrzehnte beschreiben Klima." data-wrong-feedback="Hier zählt der lange Zeitraum „über Jahrzehnte“ – das ist Klima."><button type="button" data-sort-card-select aria-pressed="false">Typische Temperatur und Niederschläge verändern sich über Jahrzehnte. <span aria-hidden="true">↕</span></button><small data-item-feedback aria-live="polite"></small></article>
-          </div></section>
-          <section class="sort-column" data-sort-target="weather"><button class="sort-target" type="button" data-sort-target-button><strong>Wetter</strong><small>Heute, morgen oder diese Woche.</small></button><div class="sort-card-list" data-sort-card-list></div></section>
-          <section class="sort-column" data-sort-target="climate"><button class="sort-target" type="button" data-sort-target-button><strong>Klima</strong><small>Typisch über viele Jahre.</small></button><div class="sort-card-list" data-sort-card-list></div></section>
-          <input type="hidden" name="weather_sort_today" data-progress><input type="hidden" name="weather_sort_tomorrow" data-progress><input type="hidden" name="weather_sort_summer" data-progress><input type="hidden" name="weather_sort_decades" data-progress>
-        </div>
-        <p class="choice-feedback" data-weather-feedback aria-live="polite">Ziehe alle Aussagen in eine Kategorie.</p>
-        </section>
+        <aside class="takeaway climate-takeaway"><strong>💡 Merke:</strong> Zusätzliche Treibhausgase halten mehr Wärme in der Atmosphäre. Dadurch erwärmt sich die Erde – die Sonne wird nicht stärker.</aside>
 
         <details class="industry-more">
           <summary>Für Neugierige: noch mehr über Klima und Jena erfahren</summary>
@@ -395,7 +385,10 @@
       </div>
       <div class="course-card-footer" data-course-footer>
         <p data-course-gate-message aria-live="polite"></p>
-        <button class="button button-primary" type="button" data-course-next data-course-next-index="2">Weiter zu Lernkarte 3</button>
+        <div class="course-card-actions">
+          <button class="button button-secondary" type="button" data-course-previous data-course-previous-index="0">Zurück zu Lernkarte 1</button>
+          <button class="button button-primary" type="button" data-course-next data-course-next-index="2">Weiter zu Lernkarte 3</button>
+        </div>
       </div>
     </section>
 
@@ -488,7 +481,10 @@
       </section>
       <div class="course-card-footer" data-course-footer>
         <p data-course-gate-message aria-live="polite"></p>
-        <button class="button button-primary" type="button" data-course-next data-course-next-index="3">Weiter zu Lernkarte 4</button>
+        <div class="course-card-actions">
+          <button class="button button-secondary" type="button" data-course-previous data-course-previous-index="1">Zurück zu Lernkarte 2</button>
+          <button class="button button-primary" type="button" data-course-next data-course-next-index="3">Weiter zu Lernkarte 4</button>
+        </div>
       </div>
     </section>
 
@@ -502,9 +498,9 @@
         <span class="station-status" aria-live="polite">offen</span>
       </div>
 
-      <p class="section-intro">Jetzt plant ihr einen Ort, an dem Menschen gut leben können – auch bei Hitze und Starkregen. Dafür braucht Natur genauso Platz wie Wege, Häuser und Spielorte.</p>
+      <p class="section-intro">Ihr habt in Lernkarte 3 ein Problem ausgewählt. Jetzt schaut ihr genauer hin: Wie kann ein Ort Menschen und Natur helfen – auch bei Hitze und Starkregen? Dafür braucht Natur genauso Platz wie Wege, Häuser und Spielorte.</p>
 
-      <aside class="future-mission"><span aria-hidden="true">🧱</span><div><strong>Euer Auftrag</strong><p>Findet zuerst heraus, was an einem Ort fehlt. Dann plant ihr in Lernkarte 5 eine Lösung dafür.</p></div></aside>
+      <aside class="future-mission"><span aria-hidden="true">🧱</span><div><strong>Euer Auftrag</strong><p>Bleibt bei eurem Problem aus Lernkarte 3: Findet heraus, was an einem Ort fehlt. Dann plant ihr in Lernkarte 5 eine passende Lösung dafür.</p></div></aside>
 
       <!-- Fachliche Grundlage: Sposab & Rieckmann 2024; Kabisch et al. 2017. -->
       <section class="planning-toolkit city-system" aria-labelledby="citySystemTitle">
@@ -516,11 +512,11 @@
       </section>
 
       <section class="sponge-lab" aria-labelledby="spongeTitle">
-        <div class="sponge-intro"><p class="eyebrow">Wasser und Schwammstadt</p><h3 id="spongeTitle">Wohin mit dem Regen?</h3><p>Eine <strong>Schwammstadt</strong> hält Regen dort, wo er fällt: Boden, Pflanzen, Mulden und Teiche nehmen ihn auf. Auf Asphalt und Dächern fließt er dagegen schnell weiter.</p></div>
+        <div class="sponge-intro"><p class="eyebrow">Beispiel: Wasser und Schwammstadt</p><h3 id="spongeTitle">Wohin mit dem Regen?</h3><p>Dieses Beispiel zeigt, wie eine Maßnahme an mehreren Problemen helfen kann: Eine <strong>Schwammstadt</strong> hält Regen dort, wo er fällt. Boden, Pflanzen, Mulden und Teiche nehmen ihn auf; auf Asphalt und Dächern fließt er dagegen schnell weiter.</p></div>
         <p class="academic-reference">Vgl. Davis &amp; Naumann (2017), S. 123.</p>
         <div class="rain-compare" aria-label="Zwei Stadtvarianten bei Starkregen">
-          <article class="rain-hard"><span>VARIANTE A</span><h4>Viel Grau</h4><p>Asphalt, Dächer und Parkplatz.</p><ol><li>Regen fällt.</li><li>Wasser versickert kaum.</li><li>Viel fließt gleichzeitig ab.</li></ol></article>
-          <article class="rain-soft"><span>VARIANTE B</span><h4>Stadt wie ein Schwamm</h4><p>Grünflächen, Bäume, Mulden und Teich.</p><ol><li>Regen fällt.</li><li>Boden und Pflanzen nehmen ihn auf.</li><li>Weniger fließt sofort ab.</li></ol></article>
+          <article class="rain-hard"><span>VARIANTE A</span><h4>Viel Grau</h4><p>Asphalt, Dächer und Parkplatz.</p><figure class="rain-visual"><img src="media/greyCity.png" alt="Graue Stadt mit vielen versiegelten Flächen und wenig Grün" width="1448" height="1086" loading="lazy" decoding="async"><figcaption>Auf vielen versiegelten Flächen kann Regen kaum in den Boden.</figcaption></figure><ol><li>Regen fällt.</li><li>Wasser versickert kaum.</li><li>Viel fließt gleichzeitig ab.</li></ol></article>
+          <article class="rain-soft"><span>VARIANTE B</span><h4>Stadt wie ein Schwamm</h4><p>Grünflächen, Bäume, Mulden und Teich.</p><figure class="rain-visual"><img src="media/GreenCity.png" alt="Grüne Stadt mit Bäumen, Teichen und bepflanzten Flächen" width="1448" height="1086" loading="lazy" decoding="async"><figcaption>Boden, Pflanzen und Wasserflächen geben dem Regen Platz.</figcaption></figure><ol><li>Regen fällt.</li><li>Boden und Pflanzen nehmen ihn auf.</li><li>Weniger fließt sofort ab.</li></ol></article>
         </div>
         <fieldset class="rain-choice" data-feedback-group data-progress-group="sponge_city_choice" data-empty-feedback="Welche Variante hilft besser bei Starkregen?">
           <legend><span class="task-legend">🧩 Deine Aufgabe</span> Welche Stadt hält Regenwasser besser zurück?</legend>
@@ -562,7 +558,10 @@
       </section>
       <div class="course-card-footer" data-course-footer>
         <p data-course-gate-message aria-live="polite">Wählt eine Spur und schreibt eine Beobachtung auf. Dann geht es zur Planung weiter.</p>
-        <button class="button button-primary" type="button" data-course-next data-course-next-index="4">Weiter zu Lernkarte 5</button>
+        <div class="course-card-actions">
+          <button class="button button-secondary" type="button" data-course-previous data-course-previous-index="2">Zurück zu Lernkarte 3</button>
+          <button class="button button-primary" type="button" data-course-next data-course-next-index="4">Weiter zu Lernkarte 5</button>
+        </div>
       </div>
     </section>
 
@@ -571,12 +570,17 @@
         <span class="station-number">05</span>
         <div>
           <p class="eyebrow">Entscheidungen treffen</p>
-          <h2 id="station5Title">Deine klimaangepasste Stadt</h2>
+          <h2 id="station5Title">Eure klimaangepasste Stadt</h2>
         </div>
         <span class="station-status" aria-live="polite">offen</span>
       </div>
 
-      <p class="section-intro">Eine starke Idee muss nicht riesig sein. Sie soll zu eurem Problem passen und für Menschen, Tiere oder Pflanzen einen Unterschied machen. Probiert erst die Planungs-Challenge aus.</p>
+      <p class="section-intro">Nehmt euer Problem aus Lernkarte 3 mit: Eine starke Idee muss nicht riesig sein. Sie soll zu eurem Ort passen und für Menschen, Tiere oder Pflanzen einen Unterschied machen. Probiert erst die Planungs-Challenge aus.</p>
+
+      <label class="field problem-repeat">
+        <span>Unser Problem aus Lernkarte 3</span>
+        <input type="text" name="solution_problem" placeholder="Wird aus Lernkarte 3 übernommen" data-progress>
+      </label>
 
       <section class="planning-toolkit" aria-labelledby="toolkitTitle">
         <div><p class="eyebrow">Fünf Bereiche, ein Ort</p><h3 id="toolkitTitle">Stadtplanung sind verbundene Entscheidungen</h3><p>Ihr müsst nicht jedes Element einbauen. Fragt bei jeder Idee: Passt sie zu unserem Ort? Wem hilft sie? Was verändert sie noch?</p></div>
@@ -590,7 +594,7 @@
       </section>
 
       <section class="heat-lab" aria-labelledby="heatLabTitle">
-        <div><p class="eyebrow">Hitze in der Stadt</p><h3 id="heatLabTitle">Wo würdest du an einem heißen Tag lieber sein?</h3><p><strong>Platz A</strong> hat dunklen Asphalt und keine Bäume. <strong>Platz B</strong> hat Bäume, Schatten, Pflanzen, Wasser und hellere Flächen. Häuser und Asphalt können sich stark aufheizen; Pflanzen helfen mit Schatten und Verdunstung beim Abkühlen.</p></div>
+        <div><p class="eyebrow">Beispiel: Hitze in der Stadt</p><h3 id="heatLabTitle">Wo würdest du an einem heißen Tag lieber sein?</h3><p>Auch wenn ihr ein anderes Problem gewählt habt: Dieses Beispiel zeigt, wie ihr später Lösungen vergleichen könnt. <strong>Platz A</strong> hat dunklen Asphalt und keine Bäume. <strong>Platz B</strong> hat Bäume, Schatten, Pflanzen, Wasser und hellere Flächen.</p></div>
         <fieldset class="heat-choice" data-feedback-group data-progress-group="heat_place_choice" data-empty-feedback="Entscheide dich und lies das Feedback.">
           <legend>Wähle einen Platz für eine Pause.</legend>
           <div class="radio-grid two-columns">
@@ -637,11 +641,6 @@
         </fieldset>
         <p class="budget-feedback" id="budgetFeedback" aria-live="polite">Wählt bis zu 10 Punkte. Denkt an Schatten, Wasser, Wege und Platz zum Wohnen.</p>
       </section>
-
-      <label class="field problem-repeat">
-        <span>Unser ausgewähltes Problem</span>
-        <input type="text" name="solution_problem" placeholder="Wird aus Station 3 übernommen" data-progress>
-      </label>
 
       <div class="solution-grid">
         <article class="solution-card">
@@ -719,7 +718,10 @@
       </section>
       <div class="course-card-footer" data-course-footer>
         <p data-course-gate-message aria-live="polite">Einigt euch auf eine Bauidee und klickt dann weiter.</p>
-        <button class="button button-primary" type="button" data-course-next data-course-next-index="5">Weiter zu Lernkarte 6</button>
+        <div class="course-card-actions">
+          <button class="button button-secondary" type="button" data-course-previous data-course-previous-index="3">Zurück zu Lernkarte 4</button>
+          <button class="button button-primary" type="button" data-course-next data-course-next-index="5">Weiter zu Lernkarte 6</button>
+        </div>
       </div>
     </section>
 
@@ -733,13 +735,13 @@
         <span class="station-status" aria-live="polite">offen</span>
       </div>
 
-      <p class="section-intro">Jetzt wird aus euren Ideen ein Stadtblock in Minecraft Education. Beim Blick auf euren Block soll man sofort sehen: Hier wurde ein Problem gelöst – und Menschen, Tiere und Pflanzen wurden mitgedacht.</p>
+      <p class="section-intro">Jetzt wird eure ausgewählte Idee aus Lernkarte 5 zu einem Stadtblock in Minecraft Education. Beim Blick auf euren Block soll man sofort sehen: Hier wurde ein Problem gelöst – und Menschen, Tiere und Pflanzen wurden mitgedacht.</p>
 
       <fieldset class="build-focus" data-feedback-group data-progress-group="build_focus" data-empty-feedback="Wählt zuerst, was in eurem Block am wichtigsten sein soll.">
         <legend><span>🧩 Deine Aufgabe</span> Was soll euer Stadtblock besonders gut können?</legend>
         <div class="build-focus-grid">
           <label><input type="radio" name="build_focus" value="Abkühlen" data-feedback="Dann plant viel Schatten: Bäume, Dächer, Sitzplätze oder helle Wege machen heiße Orte angenehmer."><span><b>☀</b><strong>Abkühlen</strong><small>Hitze kleiner machen</small></span></label>
-          <label><input type="radio" name="build_focus" value="Regen aufnehmen" data-feedback="Dann gebt dem Wasser Platz: Mulden, Teiche, Beete und durchlässige Wege helfen bei Starkregen."><span><b>☂</b><strong>Regen aufnehmen</strong><small>Wasser langsam speichern</small></span></label>
+          <label><input type="radio" name="build_focus" value="Wasser speichern" data-feedback="Dann gebt dem Wasser Platz: Mulden, Teiche, Beete und durchlässige Wege helfen bei Starkregen und speichern Wasser für trockene Zeiten."><span><b>☂</b><strong>Wasser speichern</strong><small>Bei Regen und Trockenheit helfen</small></span></label>
           <label><input type="radio" name="build_focus" value="Natur helfen" data-feedback="Dann schafft Lebensräume: Blüten, Hecken, Wasser und kleine wilde Ecken helfen vielen Tieren."><span><b>✿</b><strong>Natur helfen</strong><small>Platz für Tiere schaffen</small></span></label>
         </div>
         <p class="choice-feedback" data-choice-feedback aria-live="polite">Wählt zuerst, was in eurem Block am wichtigsten sein soll.</p>
@@ -809,41 +811,70 @@
       </label>
       <div class="course-card-footer" data-course-footer>
         <p data-course-gate-message aria-live="polite">Prüft euren Bauplan noch einmal gemeinsam und beendet dann den Lernkarten-Kurs.</p>
-        <button class="button button-primary" type="button" data-course-finish>Lernkarten abschließen</button>
+        <div class="course-card-actions">
+          <button class="button button-secondary" type="button" data-course-previous data-course-previous-index="4">Zurück zu Lernkarte 5</button>
+          <button class="button button-primary" type="button" data-course-finish>Lernkarten abschließen</button>
+        </div>
       </div>
     </section>
 
-    <section class="moderation-round" id="moderationskarten" data-course-finish-card aria-labelledby="moderationTitle" hidden>
+    <section class="moderation-round" id="moderationskarten" data-course-finish-card data-course-finish-step="0" aria-labelledby="moderationTitle" hidden>
       <div class="moderation-round-intro">
-        <p class="eyebrow">Jetzt zusammenführen</p>
-        <h2 id="moderationTitle">Kleingruppenrunde mit Moderationskarten</h2>
-        <p>Ihr habt alle sechs Lernkarten durchgeklickt. Sammelt jetzt als Kleingruppe eure Antworten auf Moderationskarten: eine Idee oder Beobachtung pro Karte.</p>
+        <p class="eyebrow">Euer Fazit</p>
+        <h2 id="moderationTitle">Unsere Umsetzungsideen</h2>
+        <p>Haltet eure wichtigsten Ideen auf digitalen Moderationskarten fest. Eine Karte steht jeweils für eine umsetzbare Idee.</p>
       </div>
-      <ol class="moderation-prompts">
-        <li><span>1</span><strong>Unser Problem:</strong> Welches Stadt- oder Klimaproblem wollen wir lösen – und wen betrifft es?</li>
-        <li><span>2</span><strong>Unsere wichtigste Maßnahme:</strong> Was verändern wir konkret und warum hilft das?</li>
-        <li><span>3</span><strong>Wasser und Natur:</strong> Wie hält unser Ort Regen zurück und wo finden Pflanzen oder Tiere Platz?</li>
-        <li><span>4</span><strong>Bestehendes und Neues:</strong> Was erhalten, verändern oder bauen wir neu?</li>
-        <li><span>5</span><strong>Unsere schwierige Entscheidung:</strong> Welchen Kompromiss mussten wir finden?</li>
-      </ol>
-      <p class="moderation-note"><strong>Danach:</strong> Legt ähnliche Karten zusammen, einigt euch auf die wichtigsten Aussagen und nutzt sie für eure kurze Präsentation.</p>
+      <div class="moderation-prompts" aria-label="Digitale Moderationskarten">
+        <label class="moderation-card"><span>1</span><strong>Unsere wichtigste Idee</strong><textarea name="moderation_idea_main" rows="4" data-progress placeholder="Wir möchten …"></textarea></label>
+        <label class="moderation-card"><span>2</span><strong>So hilft sie</strong><textarea name="moderation_idea_effect" rows="4" data-progress placeholder="Das hilft, weil …"></textarea></label>
+        <label class="moderation-card"><span>3</span><strong>Hier setzen wir sie um</strong><textarea name="moderation_idea_place" rows="4" data-progress placeholder="An diesem Ort …"></textarea></label>
+        <label class="moderation-card"><span>4</span><strong>So bauen wir sie in Minecraft</strong><textarea name="moderation_idea_minecraft" rows="4" data-progress placeholder="Dafür bauen wir …"></textarea></label>
+      </div>
+      <p class="moderation-note"><strong>Zum Abschluss:</strong> Wählt die Karten aus, die ihr in eurer Präsentation zeigen möchtet.</p>
+      <div class="completion-navigation">
+        <button class="button button-primary" type="button" data-completion-step="1">Weiter zu den Erkenntnispunkten</button>
+      </div>
     </section>
 
-    <section class="course-conclusion" id="fazit" data-course-finish-card aria-labelledby="conclusionTitle" hidden>
+    <section class="course-conclusion" id="fazit" data-course-finish-card data-course-finish-step="1" aria-labelledby="conclusionTitle" hidden>
       <div>
-        <p class="eyebrow">Euer Fazit</p>
+        <p class="eyebrow">Erkenntnispunkte</p>
         <h2 id="conclusionTitle">Was nehmt ihr aus dem Klima-Labor mit?</h2>
         <p>Eine nachhaltige Stadt entsteht nicht durch eine einzelne perfekte Maßnahme. Gute Lösungen verbinden Klima, Wasser, Natur und die Bedürfnisse der Menschen vor Ort.</p>
       </div>
       <ul class="final-summary" data-final-summary aria-live="polite"></ul>
+      <section class="measure-inspiration" aria-labelledby="inspirationTitle">
+        <div class="measure-inspiration-intro">
+          <p class="eyebrow">Ideen-Katalog</p>
+          <h3 id="inspirationTitle">12 mögliche Maßnahmen für eure nachhaltige Stadt</h3>
+          <p>Die Bilder sind Inspiration, keine Checkliste. Wählt ein oder zwei Ideen aus, die wirklich zu eurem Ort und eurem Bauplan passen.</p>
+        </div>
+        <div class="measure-inspiration-grid">
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="schwammstadt" aria-haspopup="dialog"><img src="media/01_Schwammstadt.svg" alt="Illustration einer Schwammstadt" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Schwammstadt</strong><span>Regen speichern und versickern lassen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="stadtpark" aria-haspopup="dialog"><img src="media/02_Stadtpark.svg" alt="Illustration eines Stadtparks" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Stadtpark</strong><span>Schatten, Abkühlung und Lebensraum schaffen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="gruendach" aria-haspopup="dialog"><img src="media/03_Gruendach.svg" alt="Illustration eines Gründachs" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Gründach</strong><span>Regen zurückhalten und Gebäude kühlen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="agroforst" aria-haspopup="dialog"><img src="media/04_Agroforst.svg" alt="Illustration von Agroforst mit Bäumen und Anbauflächen" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Agroforst</strong><span>Bäume schützen Boden, Wasser und Nahrung.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="recycling" aria-haspopup="dialog"><img src="media/05_Recycling.svg" alt="Illustration von Recycling" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Recycling</strong><span>Materialien im Kreislauf statt im Müll nutzen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="radwege" aria-haspopup="dialog"><img src="media/06_Rad_und_Fusswege.svg" alt="Illustration von Rad- und Fußwegen" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Rad- und Fußwege</strong><span>Kurze Wege ohne Abgase ermöglichen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="energie" aria-haspopup="dialog"><img src="media/07_Erneuerbare_Energie.svg" alt="Illustration erneuerbarer Energie" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Erneuerbare Energie</strong><span>Strom ohne Kohle, Öl und Gas erzeugen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="marktplatz" aria-haspopup="dialog"><img src="media/08_Marktplatz.svg" alt="Illustration eines grünen Marktplatzes" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Grüner Marktplatz</strong><span>Treffen, einkaufen und im Schatten bleiben.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="flussufer" aria-haspopup="dialog"><img src="media/09_Flussufer.svg" alt="Illustration eines naturnahen Flussufers" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Naturnahes Flussufer</strong><span>Wasser Raum geben und Ufer abkühlen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="oepnv" aria-haspopup="dialog"><img src="media/10_OEPNV.svg" alt="Illustration des öffentlichen Nahverkehrs" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>ÖPNV</strong><span>Viele Menschen gemeinsam statt einzeln fahren lassen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="wohngebaeude" aria-haspopup="dialog"><img src="media/11_Wohngebaeude.svg" alt="Illustration eines energieeffizienten Wohngebäudes" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Gute Wohngebäude</strong><span>Energie sparen und im Sommer angenehmer wohnen.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+          <button class="measure-inspiration-card" type="button" data-measure-card data-measure-id="spielort" aria-haspopup="dialog"><img src="media/12_Spiel_und_Lernort.svg" alt="Illustration eines Spiel- und Lernorts" loading="lazy" decoding="async"><span class="measure-inspiration-caption"><strong>Spiel- und Lernort</strong><span>Schatten, Bewegung und gemeinsames Lernen verbinden.</span><span class="measure-card-action">Aufbau und Wirkung ansehen</span></span></button>
+        </div>
+      </section>
+      <div class="completion-navigation">
+        <button class="button button-secondary" type="button" data-completion-step="0">Zurück zu den Moderationskarten</button>
+        <button class="button button-primary" type="button" data-completion-step="2">Weiter zur Literaturliste</button>
+      </div>
       <div class="completion-actions" aria-label="Abschlussaktionen">
         <button class="button button-primary" type="button" id="finalExportButton">Antworten herunterladen</button>
         <button class="button button-secondary" type="button" id="finalResetButton">Arbeitsblatt zurücksetzen</button>
-        <a class="button button-quiet" href="#quellen">Literaturverzeichnis ansehen</a>
       </div>
     </section>
 
-    <section class="sources sources-expanded" id="quellen" data-course-finish-card aria-labelledby="sourcesTitle" hidden>
+    <section class="sources sources-expanded" id="quellen" data-course-finish-card data-course-finish-step="2" aria-labelledby="sourcesTitle" hidden>
       <div class="sources-intro">
         <p class="eyebrow">Nachweise und weiterlesen</p>
         <h2 id="sourcesTitle">Literaturverzeichnis &amp; fachliche Nachweise</h2>
@@ -928,6 +959,9 @@
       </section>
 
       <p class="source-note">Redaktioneller Stand: Oktober 2026 · Externe Seiten können sich verändern. Der Klick-Comic ist eine didaktische, historische Fiktion und keine Darstellung eines einzelnen überlieferten Ereignisses.</p>
+      <div class="completion-navigation">
+        <button class="button button-secondary" type="button" data-completion-step="1">Zurück zu den Erkenntnispunkten</button>
+      </div>
     </section>
   </main>
 
@@ -935,6 +969,27 @@
     <p>JenaCraft · Digitales Arbeitsblatt „Klima und Stadt“</p>
     <a href="#start">Zum Anfang</a>
   </footer>
+
+  <dialog class="measure-dialog" id="measureDialog" aria-labelledby="measureDialogTitle">
+    <article class="dialog-card measure-dialog-card">
+      <div class="measure-dialog-header">
+        <p class="eyebrow">Maßnahmen im Blick</p>
+        <button class="button button-secondary measure-dialog-close" type="button" data-measure-dialog-close>Schließen</button>
+      </div>
+      <h2 id="measureDialogTitle">Maßnahme</h2>
+      <div class="measure-dialog-content">
+        <img id="measureDialogImage" src="" alt="">
+        <div>
+          <p class="measure-dialog-description" id="measureDialogDescription"></p>
+          <dl class="measure-dialog-facts">
+            <div><dt>So ist sie aufgebaut</dt><dd id="measureDialogStructure"></dd></div>
+            <div><dt>So hilft sie</dt><dd id="measureDialogFunction"></dd></div>
+            <div><dt>In Minecraft</dt><dd id="measureDialogMinecraft"></dd></div>
+          </dl>
+        </div>
+      </div>
+    </article>
+  </dialog>
 
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>

@@ -34,6 +34,12 @@
         card.innerHTML = '<h3>Der Jenaer Wald und wir</h3><img src="Jena_HistoricalJobs/image/harzer1.jpg" alt="Vorschau: Der Jenaer Wald und wir" style="width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block; margin:12px 0; border-radius:12px;"><p class="muted">Digitales Arbeitsblatt</p><p class="muted">Ein digitales Arbeitsblatt für einen Workshop zur Geschichte des Jenaer Waldes und den historischen Waldberufen.<br><br><a href="Jena_HistoricalJobs/">Arbeitsblatt öffnen</a></p><div><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">Bildung</span></div>';
         return card;
       };
+      const sustainableCityFallback = () => {
+        const card = document.createElement("article");
+        card.className = "card project";
+        card.innerHTML = '<h3>Klima-Labor: Nachhaltige Stadtentwicklung</h3><img src="NachhaltigeStadtentwicklung/media/GreenCity.png" alt="Vorschau: Grüne, nachhaltige Stadt mit Bäumen, Wasserflächen und begrünten Gebäuden" style="width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center; display:block; margin:12px 0; border-radius:12px;"><p class="muted">Digitales Arbeitsblatt</p><p class="muted">Eine interaktive Lernreise zu Klimaschutz, Klimaanpassung und einer nachhaltigen Stadt – mit Aufgaben, Stadtplanung und Minecraft-Bauplan.<br><br><a href="NachhaltigeStadtentwicklung/">Arbeitsblatt öffnen</a></p><div><span class="tag">Klima</span><span class="tag">Stadtentwicklung</span><span class="tag">Nachhaltigkeit</span><span class="tag">Bildung</span></div>';
+        return card;
+      };
       (async () => {
         const localSource = new URL("../datenflix007.github.io/src/projekte.html", location.href).href;
         const productionSource = "https://datenflix007.github.io/src/projekte.html";
@@ -69,7 +75,7 @@
           catalog.replaceChildren(fragment);
           description.textContent = `${cards.length + 1} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`;
         } catch (error) {
-          catalog.replaceChildren(forestFallback(), mapCard());
+          catalog.replaceChildren(forestFallback(), sustainableCityFallback(), mapCard());
           description.textContent = "Interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.";
         }
       })();
