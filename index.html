@@ -59,7 +59,9 @@
           if (!sourceText) throw new Error("Katalogquelle nicht erreichbar");
           const documentFromSource = new DOMParser().parseFromString(sourceText, "text/html");
           const sourceDetails = [...documentFromSource.querySelectorAll("details")].find((element) => element.querySelector("summary")?.textContent.trim() === "Tools");
-          const cards = sourceDetails ? [...sourceDetails.querySelectorAll(".grid > .card.project")].filter((card) => card.querySelector('a[href*="digital-worksheets/"]')) : [];
+          const cards = sourceDetails ? [...sourceDetails.querySelectorAll(".grid > .card.project")]
+            .filter((card) => card.querySelector('a[href*="digital-worksheets/"]'))
+            .filter((card) => !card.querySelector('a[href*="NachhaltigeStadtentwicklung/"]')) : [];
           if (!cards.length) throw new Error("Keine Arbeitsblatt-Karten gefunden");
           const fragment = document.createDocumentFragment();
           cards.forEach((sourceCard) => {
@@ -71,9 +73,10 @@
             });
             fragment.append(card);
           });
+          fragment.append(sustainableCityFallback());
           fragment.append(mapCard());
           catalog.replaceChildren(fragment);
-          description.textContent = `${cards.length + 1} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`;
+          description.textContent = `${cards.length + 2} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`;
         } catch (error) {
           catalog.replaceChildren(forestFallback(), sustainableCityFallback(), mapCard());
           description.textContent = "Interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.";
