@@ -8,7 +8,7 @@
     /* Gemeinsame Kopfzeile für alle Datenflix007-Bereiche. */
     header{background:rgba(9,13,22,.84);border-bottom-color:#263858}.brand i{background:#62e0c0;box-shadow:0 0 10px #62e0c0,0 0 24px rgba(98,224,192,.55)}.navlinks a:hover,.navlinks .active{color:var(--text);border-color:#3b557d;background:#16233a}
     /* Gleiche dauerhafte Kartenform wie Tools und Guides. */
-    .catalog{margin-top:54px}.catalog h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:7px}.catalog-intro{margin:0 0 23px;color:var(--muted)}.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.catalog-grid .card.project{min-height:0;padding:18px;background:#111418;border:1px solid #334155;border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,.4);color:#e6e9ef;transition:transform .2s ease,box-shadow .2s ease}.catalog-grid .card.project:hover{transform:translateY(-2px);border-color:#46658f;box-shadow:0 14px 30px rgba(0,0,0,.28)}.catalog-grid .project h3{margin:0 0 6px;font-size:1.05rem}.catalog-grid .muted{color:#8892a6}.catalog-grid .project a{color:#4fc3f7!important;font-weight:600}.catalog-grid .tag{display:inline-block;border:1px solid #334155;border-radius:999px;padding:4px 8px;font-size:.8rem;color:#8892a6;margin:8px 8px 0 0}.catalog-status{color:var(--muted);padding:24px 0}.catalog-error{color:#ffd2d2}@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.catalog-grid{grid-template-columns:1fr}}
+    .catalog{margin-top:54px}.catalog h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:7px}.catalog-intro{margin:0 0 23px;color:var(--muted)}.catalog-tabs{display:flex;gap:10px;flex-wrap:wrap;margin:25px 0 18px;padding-bottom:12px;border-bottom:1px solid #263858}.catalog-tab{appearance:none;cursor:pointer;border:1px solid #334155;border-radius:999px;background:#111418;color:#aab4c6;padding:8px 14px;font:inherit;font-weight:700;transition:background .2s,border-color .2s,color .2s}.catalog-tab:hover{border-color:#4fc3f7;color:#e6e9ef}.catalog-tab:focus-visible{outline:3px solid #62e0c0;outline-offset:3px}.catalog-tab[aria-selected="true"]{border-color:#4fc3f7;background:#173246;color:#f4fbff}.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.catalog-grid .card.project{min-height:0;padding:18px;background:#111418;border:1px solid #334155;border-radius:16px;box-shadow:0 10px 30px rgba(2,6,23,.4);color:#e6e9ef;transition:transform .2s ease,box-shadow .2s ease}.catalog-grid .card.project:hover{transform:translateY(-2px);border-color:#46658f;box-shadow:0 14px 30px rgba(0,0,0,.28)}.catalog-grid .project h3{margin:0 0 6px;font-size:1.05rem}.catalog-grid .muted{color:#8892a6}.catalog-grid .project a{color:#4fc3f7!important;font-weight:600}.catalog-grid .tag{display:inline-block;border:1px solid #334155;border-radius:999px;padding:4px 8px;font-size:.8rem;color:#8892a6;margin:8px 8px 0 0}.tafelbild-preview{position:relative;overflow:hidden;margin:12px 0;border-radius:12px;aspect-ratio:16/9;background:#07101c}.tafelbild-preview::after{position:absolute;inset:0;content:"";background:radial-gradient(circle at 58% 56%,transparent 0 17%,#06101a88 48%,#02060ddd 100%),linear-gradient(125deg,#02060c00 42%,#07192977)}.tafelbild-preview img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 47%;filter:saturate(1.12) contrast(1.05)}.tafelbild-preview span{position:absolute;z-index:1;right:10px;bottom:10px;border:1px solid #9edfff99;border-radius:999px;background:#08111edb;color:#eef9ff;padding:3px 8px;font-size:.72rem;font-weight:800;text-shadow:0 1px 3px #000}.catalog-status{color:var(--muted);padding:24px 0}.catalog-error{color:#ffd2d2}@media(max-width:900px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.catalog-grid{grid-template-columns:1fr}.catalog-tabs{gap:8px}.catalog-tab{padding:8px 12px}}
     /* Gemeinsame Portalgrundlage; Akzente bleiben auf Karten beschränkt. */
     body{background:#0b0d10;color:#e6e9ef}.wrap{width:min(1100px,calc(100% - 40px))}.promise div,.card{border-color:#334155;background:#111418}.card{box-shadow:0 10px 30px rgba(2,6,23,.4)}footer{border-top-color:#263858;color:#8892a6}
   </style>
@@ -17,11 +17,86 @@
 </head>
 <body>
   <header><div class="wrap nav"><a class="brand" href="https://datenflix007.github.io/"><i></i>Felix Staacke</a><nav class="navlinks" aria-label="Bereiche"><a href="https://datenflix007.github.io/">Portal</a><a href="https://datenflix007.github.io/tools/">Tools</a><a href="https://datenflix007.github.io/guides/">Guides</a></nav></div></header>
-  <main class="wrap"><section class="catalog" aria-labelledby="catalog-title"><h2 id="catalog-title">Alle digitalen Arbeitsblätter</h2><p class="catalog-intro" id="catalog-description">Lade die Materialübersicht …</p><div class="catalog-grid" id="projectCatalog" aria-live="polite"><p class="catalog-status">Karten werden geladen …</p></div></section></main><footer><div class="wrap">Datenflix007 · Digitale Lernmaterialien für Schule und Workshop</div></footer>
+  <main class="wrap">
+    <section class="catalog" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Digitale Lernmaterialien</h2>
+      <div class="catalog-tabs" role="tablist" aria-label="Materialkategorie">
+        <button class="catalog-tab" id="worksheets-tab" type="button" role="tab" aria-selected="true" aria-controls="worksheets-panel">Arbeitsblätter</button>
+        <button class="catalog-tab" id="tafelbilder-tab" type="button" role="tab" aria-selected="false" aria-controls="tafelbilder-panel" tabindex="-1">Tafelbilder</button>
+      </div>
+      <p class="catalog-intro" id="catalog-description">Lade die Materialübersicht …</p>
+      <div id="worksheets-panel" role="tabpanel" aria-labelledby="worksheets-tab">
+        <div class="catalog-grid" id="projectCatalog" aria-live="polite"><p class="catalog-status">Karten werden geladen …</p></div>
+      </div>
+      <div id="tafelbilder-panel" role="tabpanel" aria-labelledby="tafelbilder-tab" hidden>
+        <div class="catalog-grid">
+          <article class="card project">
+            <h3>Rom und China</h3>
+            <div class="tafelbild-preview">
+              <img src="https://datenflix007.github.io/DigitalesTafelbild-RomUndChina/img/earth-blue-marble.jpg" alt="Vorschau: Digitales Tafelbild Rom und China mit interaktivem Globus">
+              <span>Interaktiver Globus</span>
+            </div>
+            <p class="muted">Digitales Tafelbild</p>
+            <p class="muted">Römisches Reich und Han-Reich im Vergleich: Räume, Nachbarreiche und Verbindungen auf einem interaktiven Globus entdecken.<br><br><a href="https://datenflix007.github.io/DigitalesTafelbild-RomUndChina/" target="_blank" rel="noopener noreferrer">Tafelbild öffnen</a></p>
+            <div><span class="tag">Geschichte</span><span class="tag">Rom</span><span class="tag">China</span><span class="tag">Globus</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main><footer><div class="wrap">Datenflix007 · Digitale Lernmaterialien für Schule und Workshop</div></footer>
   <script>
     (() => {
       const catalog = document.getElementById("projectCatalog");
       const description = document.getElementById("catalog-description");
+      const tabDefinitions = [
+        {
+          id: "worksheets",
+          button: document.getElementById("worksheets-tab"),
+          panel: document.getElementById("worksheets-panel"),
+          description: () => worksheetDescription
+        },
+        {
+          id: "tafelbilder",
+          button: document.getElementById("tafelbilder-tab"),
+          panel: document.getElementById("tafelbilder-panel"),
+          description: () => "Ein digitales Tafelbild zum Vergleichen, Erkunden und gemeinsamen Besprechen."
+        }
+      ];
+      let activeTab = "worksheets";
+      let worksheetDescription = "Lade die Materialübersicht …";
+
+      const selectTab = (id, moveFocus = false) => {
+        activeTab = id;
+        const selectedTab = tabDefinitions.find((tab) => tab.id === id);
+        tabDefinitions.forEach((tab) => {
+          const selected = tab === selectedTab;
+          tab.button.setAttribute("aria-selected", String(selected));
+          tab.button.tabIndex = selected ? 0 : -1;
+          tab.panel.hidden = !selected;
+        });
+        description.textContent = selectedTab.description();
+        if (moveFocus) selectedTab.button.focus();
+      };
+
+      const setWorksheetDescription = (text) => {
+        worksheetDescription = text;
+        if (activeTab === "worksheets") description.textContent = text;
+      };
+
+      tabDefinitions.forEach((tab, index) => {
+        tab.button.addEventListener("click", () => selectTab(tab.id));
+        tab.button.addEventListener("keydown", (event) => {
+          let nextIndex = index;
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (index + 1) % tabDefinitions.length;
+          else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (index - 1 + tabDefinitions.length) % tabDefinitions.length;
+          else if (event.key === "Home") nextIndex = 0;
+          else if (event.key === "End") nextIndex = tabDefinitions.length - 1;
+          else return;
+          event.preventDefault();
+          selectTab(tabDefinitions[nextIndex].id, true);
+        });
+      });
+
       const mapCard = () => {
         const card = document.createElement("article");
         card.className = "card project";
@@ -76,10 +151,10 @@
           fragment.append(sustainableCityFallback());
           fragment.append(mapCard());
           catalog.replaceChildren(fragment);
-          description.textContent = `${cards.length + 2} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`;
+          setWorksheetDescription(`${cards.length + 2} interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.`);
         } catch (error) {
           catalog.replaceChildren(forestFallback(), sustainableCityFallback(), mapCard());
-          description.textContent = "Interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.";
+          setWorksheetDescription("Interaktive Materialien für Recherche, Beobachtung und eigenes Entdecken.");
         }
       })();
     })();
